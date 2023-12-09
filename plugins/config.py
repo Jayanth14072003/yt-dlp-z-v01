@@ -1,6 +1,5 @@
-#By KA18 the @legend580 💛❤️
-
 import os
+
 import logging
 
 logging.basicConfig(
@@ -12,19 +11,20 @@ logging.basicConfig(
 
 class Config(object):
 
-    BOT_TOKEN = os.environ.get("BOT_TOKEN", "")
+    # BOT_TOKEN = os.environ.get("BOT_TOKEN", "6100891233:AAHo_OjnFWTdY_JewRdcqphxASAcAK1IHVg") #ajhhsa
+    BOT_TOKEN = os.environ.get("BOT_TOKEN", "5872747581:AAH7_XPCOCEVfbgUhepjJWlcOmj8wjDTjBk") #jn_url
 
-    API_ID = int(os.environ.get("API_ID", ""))
+    API_ID = int(os.environ.get("API_ID", "3393749"))
 
-    API_HASH = os.environ.get("API_HASH", "")
+    API_HASH = os.environ.get("API_HASH", "a15a5954a1db54952eebd08ea6c68b71")
 
-    AUTH_USERS = set(int(x) for x in os.environ.get("AUTH_USERS", "").split())
+    AUTH_USERS = set(int(x) for x in os.environ.get("AUTH_USERS", "1061576483").split())
 
     BANNED_USERS = set(int(x) for x in os.environ.get("BANNED_USERS", "").split())
 
     DOWNLOAD_LOCATION = "./DOWNLOADS"
 
-    UPDATE_CHANNEL = os.environ.get("UPDATE_CHANNEL", "")
+    UPDATES_CHANNEL = os.environ.get("UPDATE_CHANNEL", "-1001512853438")
 
     MAX_FILE_SIZE = 4194304000
 
@@ -46,18 +46,18 @@ class Config(object):
 
     DEF_WATER_MARK_FILE = "Use this bot @url_uploaderV3Bott"
 
-    DATABASE_URL = os.environ.get("DATABASE_URL", "s")
+    DATABASE_URL = os.environ.get("DATABASE_URL", "mongodb+srv://Jayanna:Jayanna2023@yash.tm1c2bd.mongodb.net/?retryWrites=true&w=majority")
 
     SESSION_NAME = os.environ.get("SESSION_NAME", "TG_FILES")
 
-    LOG_CHANNEL = int(os.environ.get("LOG_CHANNEL", ""))
+    LOG_CHANNEL = int(os.environ.get("LOG_CHANNEL", "-1001512853438"))
 
     LOGGER = logging
 
-    OWNER_ID = int(os.environ.get("OWNER_ID", ""))
+    OWNER_ID = int(os.environ.get("OWNER_ID", "1061576483"))
     
-    BOT_USERNAME = os.environ.get("BOT_USERNAME", "")
+    BOT_USERNAME = os.environ.get("BOT_USERNAME", "dgfghgjbot")
 
-    PRO_USERS = list(set(int(x) for x in os.environ.get("PRO_USERS", "0").split()))
+    PRO_USERS = list(set(int(x) for x in os.environ.get("PRO_USERS", "1061576483").split()))
 
     PRO_USERS.append(OWNER_ID)
