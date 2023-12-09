@@ -1,5 +1,4 @@
-# IT'S LUFFY | TG I'd @GOD_LUFFY_ATI
-
+#By KA18 the @legend580 💛❤️
 
 import os
 import time
