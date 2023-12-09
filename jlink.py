@@ -190,7 +190,7 @@ try:
 
     global pkey
     pkey = keys[2]
-    for key in keys:
+    # for key in keys:
         # print('--key ' + key)
     
     ke_ys = ' '.join([f'--key {key}' for key in keys]).split()
