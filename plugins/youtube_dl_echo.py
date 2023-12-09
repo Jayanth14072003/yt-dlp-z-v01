@@ -19,6 +19,7 @@ from hachoir.parser import createParser
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from pyrogram.errors import UserNotParticipant
 from pyrogram.types import Thumbnail
+from jlink import mpd_call
 
 # jiocinema link extractor
 from pathlib import Path
@@ -48,7 +49,7 @@ async def GetUrl(bot, update):
        chat_id=update.chat.id,
        action="typing"
     )
-    logger.info(update.from_user)
+    #logger.info(update.from_user)
     text_from_user = update.text
     chk = await bot.send_message(
             chat_id=update.chat.id,
@@ -62,16 +63,17 @@ async def GetUrl(bot, update):
         logger.info(url)
         global dlink
         dlink = url
-        mpd_call(dlink)
+        hk = await mpd_call(dlink)
+        pmpd,pkey,ptitle = hk
         await chk.dlete()
-        main_j_bot(bot, update)
+        await main_j_bot(bot, update,pmpd,pkey,ptitle)
         return url   
         
     else:
         await bot.edit_message_text(
         text=f'<b>I can download only JioCinema links..?\nSend jiocinema links to download...!!</b>',
-        chat_id=update.message.chat.id,
-        message_id=update.message.message_id
+        chat_id=update.chat.id,
+        message_id=update.message_id
         )
 
 # def GetLink():
@@ -85,7 +87,6 @@ import os
 import shutil
 import time
 from datetime import datetime
-from jlink import ptitle, pmpd, pkey
 from plugins.config import Config
 from plugins.translation import Translation
 # from plugins.custom_thumbnail import *
@@ -94,8 +95,12 @@ from pyrogram.types import InputMediaPhoto
 from plugins.stuff import progress_for_pyrogram, humanbytes, random_char
 # from plugins.database.database import db
 from PIL import Image
+#from jlink import mpd_call
+#ptitle= mpd_call.ptitle
+#pmpd=mpd_call.pmpd
+#pkey=mpd_call.pkey 
 
-async def main_j_bot(bot, update):
+async def main_j_bot(bot, update,pmpd,pkey,ptitle):
     youtube_dl_url = pmpd
     random1 = random_char(5)
     custom_vfile_name = "video" + ".mp4"
