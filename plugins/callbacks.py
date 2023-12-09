@@ -1,4 +1,4 @@
-# EliteCraft_Studios
+#By KA18 the @legend580 💛❤️
 
 import os
 # from functions.display_progress import progress_for_pyrogram, humanbytes
