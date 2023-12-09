@@ -41,7 +41,7 @@ def get_accesstoken():
     return token["authToken"]
 
 def mpd_call(dlink):
-        access_token= get_accesstoken()
+        access_token= await get_accesstoken()
         
         # print('\ntest link: https://www.jiocinema.com/movies/sergeant-bhojpuri/3767689\ntest link: https://www.jiocinema.com/tv-shows/kaalkoot/1/janam-din/3788001\n')
         
@@ -59,7 +59,7 @@ def mpd_call(dlink):
             
             return ''.join(invalid_chars.get(c, c) for c in title)
         
-        decoded = jwt.decode(access_token, options={"verify_signature": False})
+        decoded = await jwt.decode(access_token, options={"verify_signature": False})
         # print(f'\n{decoded}\n')
         
         deviceId = decoded['data']['deviceId']
@@ -118,36 +118,36 @@ def mpd_call(dlink):
             'parentalPinValid': True,
         }
         
-        response2 = requests.post('https://apis-jiovoot.voot.com/playbackjv/v4/'+link_id+'', headers=headers2, json=json_data2, verify=False).json()
+        response2 = await requests.post('https://apis-jiovoot.voot.com/playbackjv/v4/'+link_id+'', headers=headers2, json=json_data2, verify=False).json()
         
-        contentType = response2['data']['contentType']
+        contentType = await response2['data']['contentType']
         
         if contentType == 'MOVIE':
-            movie_name = response2['data']['name']
+            movie_name = await response2['data']['name']
             title = f'{movie_name}'
         
         elif contentType == 'EPISODE':
-            showName = response2['data']['show']['name']
-            season_num = int(response2['data']['episode']['season'])
-            episode_num = int(response2['data']['episode']['episodeNo'])
-            episode_title = response2['data']['fullTitle']
+            showName = await response2['data']['show']['name']
+            season_num = await int(response2['data']['episode']['season'])
+            episode_num = await int(response2['data']['episode']['episodeNo'])
+            episode_title = await response2['data']['fullTitle']
             
             title = f'{showName} - S{season_num:02d}E{episode_num:02d} - {episode_title}'
         
         else:
-            movie_name = response2['data']['name']
+            movie_name = await response2['data']['name']
             title = f'{movie_name}'
         
-        title = replace_invalid_chars(title)
+        title = await replace_invalid_chars(title)
         # print(f'\n{title}\n')
         global ptitle
         ptitle = title
         
-        mpd = response2['data']['playbackUrls'][0]['url']
+        mpd = await response2['data']['playbackUrls'][0]['url']
         global pmpd
         pmpd = mpd
         
-        lic_url = response2['data']['playbackUrls'][0]['licenseurl']
+        lic_url = await response2['data']['playbackUrls'][0]['licenseurl']
         try:
             import requests
             
@@ -157,7 +157,7 @@ def mpd_call(dlink):
                 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.0.0 Safari/537.36',
             }
             
-            response03 = requests.get(mpd, headers=headers03, verify=False).text
+            response03 = await requests.get(mpd, headers=headers03, verify=False).text
             
             pssh = re.findall(r'<cenc:pssh>(.{20,170})</cenc:pssh>', response03)[0].strip()
             # print(f'{pssh}\n')
@@ -189,7 +189,7 @@ def mpd_call(dlink):
                 Correct, keyswvdecrypt = wvdecrypt.start_process()
                 if Correct:
                     return Correct, keyswvdecrypt
-            Correct, keys = WV_Function(pssh, lic_url)
+            Correct, keys = await WV_Function(pssh, lic_url)
         
             global pkey
             pkey = keys[2]
