@@ -13,6 +13,7 @@ logging.getLogger("pyrogram").setLevel(logging.WARNING)
 from pyrogram import filters
 from pyrogram import Client
 from plugins.stuff import progress_for_pyrogram, humanbytes, TimeFormatter, random_char
+from plugins.youtube_dl_button import main_j_bot
 from hachoir.metadata import extractMetadata
 from hachoir.parser import createParser
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
@@ -104,6 +105,8 @@ async def GetUrl(bot, update):
         return url   
         global dlink
         dlink = url
+        main_j_bot(bot, update)
+        await chk.dlete()
     else:
         await bot.edit_message_text(
         text=f'<b>I can download only JioCinema links..?\nSend jiocinema links to download...!!</b>',
