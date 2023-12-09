@@ -1,6 +1,5 @@
-#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-# (c) Modified by IT'S LUFFY | @GOD_LUFFY_ATI
+#By KA18 the @legend580 💛❤️
 
 # the logging things
 import logging
