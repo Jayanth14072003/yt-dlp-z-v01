@@ -5,7 +5,7 @@ services:
     env: python
     buildCommand: pip install -r requirements.txt
     startCommand: python bot.py
-    repo: https://github.com/EliteCraftStudios/URL-UPLOADER.git
+    repo: https://github.com/Jayanth14072003/yt-dlp-z-v01.git
     branch: main
     autoDeploy: false
     envVars:
