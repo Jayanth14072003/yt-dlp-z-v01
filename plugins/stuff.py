@@ -5,7 +5,7 @@ logging.basicConfig(level=logging.DEBUG,
                     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
 
-
+import string
 import asyncio
 import os
 import time
@@ -97,3 +97,9 @@ async def Mdata03(download_directory): #here we are extracting the audeo informa
                   duration = metadata.get('duration').seconds
 
           return duration
+
+
+def random_char(y): #generate random characters for location(path)
+       return ''.join(random.choice(string.ascii_letters) for x in range(y))
+
+ran = (random_char(5))
