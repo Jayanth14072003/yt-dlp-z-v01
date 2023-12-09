@@ -100,7 +100,7 @@ async def main_j_bot(bot, update):
         #downloading video
         command_to_exec = [
             "yt-dlp",
-            "-f", "video=600000"
+            "-f", "video=600000",
             "--max-filesize", str(Config.TG_MAX_FILE_SIZE),
             youtube_dl_url,
             "--allow-unplayable",
@@ -144,7 +144,7 @@ async def main_j_bot(bot, update):
         # downloading audio
         command_to_exec = [
             "yt-dlp",
-            "-f", "bestaudio"
+            "-f", "bestaudio",
             youtube_dl_url,
             "--allow-unplayable",
             "-o", download_A_directory
