@@ -1,3 +1,5 @@
+#By KA18 the @legend580 💛❤️
+
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 
 class Translation(object):
