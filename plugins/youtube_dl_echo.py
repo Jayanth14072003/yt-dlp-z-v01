@@ -116,4 +116,5 @@ async def GetUrl(bot, update):
 
 
 def GetLink():
-    return GetUrl(bot, update)
+    a=GetUrl(bot, update)
+    return a
