@@ -110,3 +110,7 @@ async def GetUrl(bot, update):
         chat_id=update.message.chat.id,
         message_id=update.message.message_id
         )
+
+
+def GetLink():
+    return GetUrl(bot, update)
