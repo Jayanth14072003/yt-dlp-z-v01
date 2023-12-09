@@ -13,7 +13,7 @@ logging.getLogger("pyrogram").setLevel(logging.WARNING)
 from pyrogram import filters
 from pyrogram import Client
 from plugins.stuff import progress_for_pyrogram, humanbytes, TimeFormatter, random_char
-from plugins.youtube_dl_button import main_j_bot
+# from plugins.youtube_dl_button import main_j_bot
 from hachoir.metadata import extractMetadata
 from hachoir.parser import createParser
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
