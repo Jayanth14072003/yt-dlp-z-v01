@@ -7,7 +7,7 @@ tgcrypto
 requests
 youtube-search-python
 youtube-search
-yt-dlp==2023.7.6
+yt-dlp==2023.11.16
 aiofiles==22.1.0
 aiohttp==3.8.3
 motor
@@ -21,3 +21,7 @@ pyromod
 lk21
 Flask==2.2.2
 gunicorn==20.1.0
+xmltodict
+pyjwt
+protobuf==3.20
+pyperclip
