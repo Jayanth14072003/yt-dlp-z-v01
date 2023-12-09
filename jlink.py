@@ -194,3 +194,5 @@ try:
         # print('--key ' + key)
     
     # ke_ys = ' '.join([f'--key {key}' for key in keys]).split()
+except:
+    pass
