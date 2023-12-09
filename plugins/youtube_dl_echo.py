@@ -60,11 +60,12 @@ async def GetUrl(bot, update):
         url = text_from_user
         print(url)
         logger.info(url)
-        return url   
         global dlink
         dlink = url
         # main_j_bot(bot, update)
         await chk.dlete()
+        return url   
+        
     else:
         await bot.edit_message_text(
         text=f'<b>I can download only JioCinema links..?\nSend jiocinema links to download...!!</b>',
